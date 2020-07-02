@@ -8,7 +8,7 @@ if(process.env.NODE_ENV !== 'production') {
 const requireAuth = require('./middlewares/requireAuth')
 
 const app = express()
-
+const PORT = process.env.PORT || 3000
 app.use(express.json())
 app.use(authRoutes)
 app.use(trackRoutes)
@@ -26,4 +26,4 @@ app.get('/', requireAuth, (req, res) => {
   res.send(`Your email: ${req.user.email}`)
 })
 
-app.listen(3000, () => console.log('server started on port 3000'))
+app.listen(PORT, () => console.log(`Sstarted on port ${PORT}`))
